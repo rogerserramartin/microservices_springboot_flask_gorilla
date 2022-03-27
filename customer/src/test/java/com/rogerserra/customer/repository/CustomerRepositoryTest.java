@@ -30,7 +30,7 @@ class CustomerRepositoryTest {
 
     @Test
     @DisplayName("Find Customer By Email Test")
-    void findCustomerByEmail() {
+    void canFindCustomerByEmail() {
         // GIVEN
         Customer customer = Customer.builder()
                 .firstName("Jack")
@@ -50,7 +50,7 @@ class CustomerRepositoryTest {
 
     @Test
     @DisplayName("Delete Customer By Email Test")
-    void deleteCustomerByEmail() {
+    void canDeleteCustomerByEmail() {
         // GIVEN
         Customer customer = Customer.builder()
                 .firstName("Jack")
@@ -71,7 +71,7 @@ class CustomerRepositoryTest {
 
     @Test
     @DisplayName("Get all VIP Customers Test")
-    void getVipCustomers() {
+    void canGetVipCustomers() {
         // GIVEN
         Customer jack = Customer.builder()
                 .firstName("Jack")
@@ -105,5 +105,26 @@ class CustomerRepositoryTest {
         int numberOfVips = vipUsers.size();
         // THEN
         assertThat(numberOfVips).isEqualTo(2);
+    }
+
+    // there was no need to test this, because default jpa methods are already ok
+    @Test
+    @DisplayName("Find Customer by ID Test")
+    void canGetCustomerById() {
+        // GIVEN
+        Customer jack = Customer.builder()
+                .firstName("Jack")
+                .lastName("Garland")
+                .city("Cornelia")
+                .email("jgarland@killchaos.com")
+                .birthDate(Date.valueOf("1990-03-15"))
+                .isVip(true)
+                .build();
+        Customer saved = underTest.save(jack);
+        // WHEN
+        Optional<Customer> dbCustomer = underTest.findById(saved.getID());
+        boolean exists = dbCustomer.isPresent();
+        // THEN
+        assertThat(exists).isTrue();
     }
 }
