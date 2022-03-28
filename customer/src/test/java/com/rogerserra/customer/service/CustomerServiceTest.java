@@ -184,6 +184,7 @@ class CustomerServiceTest {
     }
 
     @Test
+    @DisplayName("Delete Customer by ID Test")
     void deleteCustomerById() {
         // GIVEN
         Customer jack = Customer.builder()
@@ -204,6 +205,7 @@ class CustomerServiceTest {
     }
 
     @Test
+    @DisplayName("Delete Customer by ID Email")
     void deleteCustomerByEmail() {
         // GIVEN
         Customer jack = Customer.builder()

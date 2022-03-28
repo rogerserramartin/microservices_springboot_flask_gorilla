@@ -21,10 +21,9 @@ public class CustomerService implements CustomerDAO {
         this.customerRepository = customerRepository;
     }
 
-
     @Override
-    public void registerCustomer(Customer customer) {
-        this.customerRepository.save(customer);
+    public Customer registerCustomer(Customer customer) {
+        return this.customerRepository.save(customer);
     }
 
     @Override

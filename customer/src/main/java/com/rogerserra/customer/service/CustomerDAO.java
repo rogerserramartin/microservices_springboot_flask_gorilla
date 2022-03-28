@@ -8,7 +8,7 @@ public interface CustomerDAO {
     // Optionals are just for Repositry Layer, we use the MODEL/ENTITY class as the type in the service layer
 
     // CREATE - UPDATE
-    void registerCustomer(Customer customer);
+    Customer registerCustomer(Customer customer);
     void updateCustomerById(Long id, Customer customer);
 
     // READ
