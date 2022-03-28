@@ -54,10 +54,7 @@ class CustomerServiceTest {
         // WHEN
         underTest.registerCustomer(customer);
         // THEN
-        ArgumentCaptor<Customer> argumentCaptor = ArgumentCaptor.forClass(Customer.class);
-        verify(customerRepository).save(argumentCaptor.capture());
-        Customer captured = argumentCaptor.getValue();
-        Assertions.assertThat(captured.getFirstName()).isEqualTo(customer.getFirstName());
+        verify(customerRepository).save(customer);
     }
 
     @Test
